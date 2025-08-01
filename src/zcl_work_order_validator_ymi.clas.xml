@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_WORK_ORDER_VALIDATOR_YMI</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Validaciones</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_WORK_ORDER_VALIDATOR_YMI</CLSNAME>
+     <CMPNAME>CHECK_CUSTOMER_EXISTS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Valida si existe el cliente</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_WORK_ORDER_VALIDATOR_YMI</CLSNAME>
+     <CMPNAME>CHECK_ORDER_EXISTS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Valida si existe la orden</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_WORK_ORDER_VALIDATOR_YMI</CLSNAME>
+     <CMPNAME>CHECK_ORDER_HISTORY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Valida si existe la orden en la tabla histórica</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_WORK_ORDER_VALIDATOR_YMI</CLSNAME>
+     <CMPNAME>CHECK_TECHNICIAN_EXISTS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Valida si existe el técnico</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_WORK_ORDER_VALIDATOR_YMI</CLSNAME>
+     <CMPNAME>VALIDATE_CREATE_ORDER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Valida creación orden de trabajo</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_WORK_ORDER_VALIDATOR_YMI</CLSNAME>
+     <CMPNAME>VALIDATE_DELETE_ORDER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Valida la eliminación de orden de trabajo</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_WORK_ORDER_VALIDATOR_YMI</CLSNAME>
+     <CMPNAME>VALIDATE_STATUS_AND_PRIORITY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Valida estado y prioridad</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_WORK_ORDER_VALIDATOR_YMI</CLSNAME>
+     <CMPNAME>VALIDATE_UPDATE_ORDER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Valida la actualización de orden de trabajo</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>
