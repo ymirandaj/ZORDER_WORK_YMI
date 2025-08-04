@@ -19,15 +19,15 @@ CLASS zcl_work_order_validator_ymi DEFINITION
       "! @parameter iv_work_order_id | Párametro que contiene el id de la orden de trabajo
       "! @parameter iv_status | Parámetro que contiene estado a consultar
       validate_update_order IMPORTING iv_work_order_id TYPE string
-                                      iv_status        TYPE string
                             RETURNING VALUE(rv_valid)  TYPE abap_bool,
       "! <p class="shorttext synchronized" lang="en">Valida la eliminación de orden de trabajo</p>
       "! Para eliminar la orden de trabajo se debe validar que la orden exista y que no esté en estado completado
       "! @parameter iv_work_order_id | Párametro que contiene el id de la orden de trabajo
       "! @parameter iv_status | Parámetro que contiene estado a consultar
       validate_delete_order IMPORTING iv_work_order_id TYPE string
-                                      iv_status        TYPE string
-                            RETURNING VALUE(rv_valid)  TYPE abap_bool,
+                            RETURNING VALUE(rv_valid)  TYPE abap_bool
+                            RAISING
+                                      zcx_validator_error,
       "! <p class="shorttext synchronized" lang="en">Valida estado y prioridad</p>
       "! Validar si el estado y prioridad son válidos.
       "! @parameter iv_status | Párametro que contiene el id de la orden de trabajo
@@ -77,12 +77,14 @@ CLASS zcl_work_order_validator_ymi IMPLEMENTATION.
 
     rv_valid = check_customer_exists( iv_customer_id  ).
     IF rv_valid = abap_false.
+    RAISE EXCEPTION NEW zcx_validator_error( text = |El cliente { iv_customer_id } no existe.| ).
       RETURN.
     ENDIF.
 
     " Check if technician exists
     rv_valid = check_technician_exists( iv_technician_id ).
     IF rv_valid = abap_false.
+    RAISE EXCEPTION NEW zcx_validator_error( text = |Técnico { iv_customer_id } no existe.| ).
       RETURN.
     ENDIF.
 
@@ -91,6 +93,7 @@ CLASS zcl_work_order_validator_ymi IMPLEMENTATION.
     FIND iv_priority IN c_valid_priority.
 
     IF sy-subrc <> 0.
+    RAISE EXCEPTION NEW zcx_validator_error( text = |La prioridad { iv_priority } no válido.| ).
       rv_valid = abap_false.
       RETURN.
     ENDIF.
@@ -105,15 +108,33 @@ CLASS zcl_work_order_validator_ymi IMPLEMENTATION.
     " Check if the work order exists
     rv_valid = check_order_exists(  iv_work_order_id  ).
     IF rv_valid = abap_false.
+
+      RAISE EXCEPTION NEW zcx_validator_error( text = |No se puede eliminar la orden { iv_work_order_id } porque no xiste.| ).
+
+      RETURN.
+    ENDIF.
+
+     " Check if the work order exists
+    rv_valid = check_order_history(  iv_work_order_id  ).
+    IF rv_valid = abap_false.
+      RAISE EXCEPTION NEW zcx_validator_error( text = |No se puede actualizar la orden { iv_work_order_id } porque ya tiene historial.| ).
       RETURN.
     ENDIF.
 
     " Check if the order status is editable (e.g., Pending)
-    IF iv_status <> 'PE'.
+    DATA lv_status TYPE c LENGTH 2.
+
+    SELECT SINGLE FROM ztworkorder_ymi
+    FIELDS status
+    WHERE work_order_id = @iv_work_order_id
+    INTO @lv_status.
+
+
+    IF lv_status NE 'PE'.
       rv_valid = abap_false.
+      RAISE EXCEPTION NEW zcx_validator_error( text = |No se puede eliminar la orden { iv_work_order_id } ya no se encuentra en estado pendiente.| ).
       RETURN.
     ENDIF.
-
     rv_valid = abap_true.
   ENDMETHOD.
 
@@ -141,12 +162,23 @@ CLASS zcl_work_order_validator_ymi IMPLEMENTATION.
     " Check if the work order exists
     rv_valid = check_order_exists(  iv_work_order_id  ).
     IF rv_valid = abap_false.
+      RAISE EXCEPTION NEW zcx_validator_error( text = |No se puede actualizar la orden { iv_work_order_id } porque no xiste.| ).
       RETURN.
     ENDIF.
 
+
+
     " Check if the order status is editable (e.g., Pending)
-    IF iv_status NE 'PE'.
-      rv_valid = abap_false.
+    DATA lv_status TYPE c LENGTH 2.
+
+    SELECT SINGLE FROM ztworkorder_ymi
+    FIELDS status
+    WHERE work_order_id = @iv_work_order_id
+    INTO @lv_status.
+
+
+    IF lv_status NE 'PE'.
+      RAISE EXCEPTION NEW zcx_validator_error( text = |No se puede eliminar la orden { iv_work_order_id } ya no se encuentra en estado pendiente.| ).
       RETURN.
     ENDIF.
 
