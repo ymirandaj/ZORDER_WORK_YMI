@@ -5,7 +5,7 @@
    <VSEOCLASS>
     <CLSNAME>ZCL_HISTORY_WORK_ORD_YMI</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>Se usa para agregar el historial de las ordenes de trabajo</DESCRIPT>
+    <DESCRIPT>Clase zcl_history_work_ord_ymi</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>

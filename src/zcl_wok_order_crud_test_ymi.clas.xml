@@ -5,7 +5,7 @@
    <VSEOCLASS>
     <CLSNAME>ZCL_WOK_ORDER_CRUD_TEST_YMI</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>Clase para hacer es test del módulo</DESCRIPT>
+    <DESCRIPT>Clase zcl_wok_order_crud_test_ymi</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>

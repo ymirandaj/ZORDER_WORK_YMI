@@ -1,3 +1,5 @@
+   "! <p class="shorttext synchronized" lang="en">Clase zcl_history_work_ord_ymi </p>
+   "! Se crea una clase para manejar el ingreso del historial de las ordenes de trabajo
 CLASS zcl_history_work_ord_ymi DEFINITION
   PUBLIC
   FINAL

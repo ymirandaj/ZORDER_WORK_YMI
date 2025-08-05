@@ -5,7 +5,7 @@
    <VSEOCLASS>
     <CLSNAME>ZCL_WORK_ORDER_VALIDATOR_YMI</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>Validaciones</DESCRIPT>
+    <DESCRIPT>Clase zcl_work_order_validator_ymi</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>

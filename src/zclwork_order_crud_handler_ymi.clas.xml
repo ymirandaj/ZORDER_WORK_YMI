@@ -5,7 +5,7 @@
    <VSEOCLASS>
     <CLSNAME>ZCLWORK_ORDER_CRUD_HANDLER_YMI</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>Permite gestionar las ordenes de trabajo</DESCRIPT>
+    <DESCRIPT>Clase zclwork_order_crud_handler_ymi</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>

@@ -3,10 +3,9 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOCLASS>
-    <CLSNAME>ZCX_VALIDATOR_ERROR</CLSNAME>
+    <CLSNAME>ZCL_TEST_YMI</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>Clase zcx_validator_error</DESCRIPT>
-    <CATEGORY>40</CATEGORY>
+    <DESCRIPT>prueba</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>

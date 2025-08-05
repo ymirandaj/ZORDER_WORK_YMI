@@ -1,3 +1,5 @@
+ "! <p class="shorttext synchronized" lang="en">Clase zcx_validator_error </p>
+   "! Clase para manejo de las excepciones del módulo.
 CLASS zcx_validator_error DEFINITION
   PUBLIC
   INHERITING FROM cx_no_check
@@ -6,15 +8,11 @@ CLASS zcx_validator_error DEFINITION
 
   PUBLIC SECTION.
 
-
-
     METHODS constructor
       IMPORTING
         textid    LIKE textid OPTIONAL
         !previous LIKE previous OPTIONAL
         text      TYPE string OPTIONAL.
-
-
 
     METHODS get_text REDEFINITION.
   PROTECTED SECTION.

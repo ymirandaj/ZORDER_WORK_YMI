@@ -1,3 +1,5 @@
+   "! <p class="shorttext synchronized" lang="en">Clase zcl_work_order_validator_ymi </p>
+   "! Clase que sirve para el manejo de las validaciones para el ingreso de las órdenes de trabajo
 CLASS zcl_work_order_validator_ymi DEFINITION
   PUBLIC
   FINAL
@@ -17,14 +19,12 @@ CLASS zcl_work_order_validator_ymi DEFINITION
       "! <p class="shorttext synchronized" lang="en">Valida la actualización de orden de trabajo</p>
       "! Para actualizar la orden de trabajo se debe validar que la orden exista y que no esté en estado completado
       "! @parameter iv_work_order_id | Párametro que contiene el id de la orden de trabajo
-      "! @parameter iv_status | Parámetro que contiene estado a consultar
       validate_update_order IMPORTING iv_work_order_id TYPE string
                             RETURNING VALUE(rv_valid)  TYPE abap_bool,
       "! <p class="shorttext synchronized" lang="en">Valida la eliminación de orden de trabajo</p>
       "! Para eliminar la orden de trabajo se debe validar que la orden exista y que no esté en estado completado
       "! @parameter iv_work_order_id | Párametro que contiene el id de la orden de trabajo
-      "! @parameter iv_status | Parámetro que contiene estado a consultar
-      validate_delete_order IMPORTING iv_work_order_id TYPE string
+        validate_delete_order IMPORTING iv_work_order_id TYPE string
                             RETURNING VALUE(rv_valid)  TYPE abap_bool
                             RAISING
                                       zcx_validator_error,
@@ -117,7 +117,7 @@ CLASS zcl_work_order_validator_ymi IMPLEMENTATION.
      " Check if the work order exists
     rv_valid = check_order_history(  iv_work_order_id  ).
     IF rv_valid = abap_false.
-      RAISE EXCEPTION NEW zcx_validator_error( text = |No se puede actualizar la orden { iv_work_order_id } porque ya tiene historial.| ).
+      RAISE EXCEPTION NEW zcx_validator_error( text = |No se puede eliminar la orden { iv_work_order_id } porque ya tiene historial.| ).
       RETURN.
     ENDIF.
 
